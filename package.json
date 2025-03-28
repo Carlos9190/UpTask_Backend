@@ -9,7 +9,7 @@
     "start": "node ./dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Carlos Eduardo Ibarra Manzano",
   "license": "ISC",
   "description": "",
   "dependencies": {
