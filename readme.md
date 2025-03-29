@@ -34,14 +34,14 @@ npm install  # or yarn install
 Create a `.env` file in the project's root directory and define the following variables:
 ```env
 # 🔗 Database connection
-DATABASE_URL=mongodb://localhost:27017/uptask
+DATABASE_URL=your_mongodb_connection_string
 
 # 🌐 Frontend URL in development
 FRONTEND_URL=http://localhost:5173
 
 # ✉️ SMTP email service configuration
 SMTP_HOST=your_smtp_host
-SMTP_PORT=587
+SMTP_PORT=your_smtp_port
 SMTP_USER=your_smtp_user
 SMTP_PASS=your_smtp_password
 
