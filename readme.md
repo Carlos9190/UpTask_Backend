@@ -58,12 +58,12 @@ JWT_SECRET=your_super_secure_secret
 npm run dev:api  # or yarn dev:api
 
 #  🌍 For deployment or full application usage:
-npm run dev # or yarn dev:api
+npm run dev # or yarn dev
 ```
 
 ### 🔗 Endpoints
 
-📄 For complete documentation, check the **Postman** collection at https://documenter.getpostman.com/view/29810403/2sB2cPj5MA.
+📄 For complete documentation, check the **Postman** collection at [Uptask_Endpoints](https://documenter.getpostman.com/view/29810403/2sB2cPj5MA).
 
 ---
 
@@ -105,6 +105,7 @@ npm run dev # or yarn dev:api
 ## 🤝 Contributing
 
 1️⃣ **Fork the repository**.
+
 2️⃣ **Create a branch** for your new feature or fix:
    ```bash
    git checkout -b new-feature
@@ -114,3 +115,10 @@ npm run dev # or yarn dev:api
    git commit -m "Add new feature"
    ```
 4️⃣ **Submit a Pull Request** for review.
+
+## 📬 Contact
+
+Developed by **Carlos Ibarra**.
+
+- GitHub: [Carlos9190](https://github.com/Carlos9190)
+- Frontend Repository: [UpTask_Frontend](https://github.com/Carlos9190/UpTask_Frontend)
