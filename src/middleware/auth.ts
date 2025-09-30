@@ -13,7 +13,7 @@ declare global {
 export const authenticate = async (req: Request, res: Response, next: NextFunction) => {
     const bearer = req.headers.authorization
     if (!bearer) {
-        const error = new Error('No autorizado')
+        const error = new Error('Unauthorized')
         res.status(401).json({ error: error.message })
         return
     }
@@ -29,10 +29,10 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
                 req.user = user
                 next()
             } else {
-                res.status(500).json({ error: 'Token no válido' })
+                res.status(500).json({ error: 'Invalid token' })
             }
         }
     } catch (error) {
-        res.status(500).json({ error: 'Token no válido' })
+        res.status(500).json({ error: 'Invalid token' })
     }
 }

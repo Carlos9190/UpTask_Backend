@@ -8,65 +8,65 @@ const router = Router()
 
 router.post('/create-account',
     body('name')
-        .notEmpty().withMessage('El nombre no puede ir vacio'),
+        .notEmpty().withMessage('Name cannot be empty'),
     body('password')
-        .isLength({ min: 8 }).withMessage('El password debe ser de 8 caracteres'),
+        .isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
     body('password_confirmation').custom((value, { req }) => {
         if (value !== req.body.password) {
-            throw new Error('Los password deben ser iguales')
+            throw new Error('Passwords must match')
         }
         return true
     }),
     body('email')
-        .isEmail().withMessage('E-mail no válido'),
+        .isEmail().withMessage('Invalid email'),
     handleInputErrors,
     AuthController.createAccount
 )
 
 router.post('/confirm-account',
     body('token')
-        .notEmpty().withMessage('El token no puede ir vacio'),
+        .notEmpty().withMessage('Token cannot be empty'),
     handleInputErrors,
     AuthController.confirmAccount
 )
 
 router.post('/login',
     body('email')
-        .isEmail().withMessage('E-mail no válido'),
+        .isEmail().withMessage('Invalid email'),
     body('password')
-        .notEmpty().withMessage('El password no puede ir vacio'),
+        .notEmpty().withMessage('Password cannot be empty'),
     handleInputErrors,
     AuthController.login
 )
 
 router.post('/request-code',
     body('email')
-        .isEmail().withMessage('E-mail no válido'),
+        .isEmail().withMessage('Invalid email'),
     handleInputErrors,
     AuthController.requestConfirmationCode
 )
 
 router.post('/forgot-password',
     body('email')
-        .isEmail().withMessage('E-mail no válido'),
+        .isEmail().withMessage('Invalid email'),
     handleInputErrors,
     AuthController.forgotPassword
 )
 
 router.post('/validate-token',
     body('token')
-        .notEmpty().withMessage('El token no puede ir vacio'),
+        .notEmpty().withMessage('Token cannot be empty'),
     handleInputErrors,
     AuthController.validateToken
 )
 
 router.post('/update-password/:token',
-    param('token').isNumeric().withMessage('Token no válido'),
+    param('token').isNumeric().withMessage('Invalid token'),
     body('password')
-        .isLength({ min: 8 }).withMessage('El password debe ser de 8 caracteres'),
+        .isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
     body('password_confirmation').custom((value, { req }) => {
         if (value !== req.body.password) {
-            throw new Error('Los password deben ser iguales')
+            throw new Error('Passwords must match')
         }
         return true
     }),
@@ -83,9 +83,9 @@ router.get('/user',
 router.put('/profile',
     authenticate,
     body('name')
-        .notEmpty().withMessage('El nombre no puede ir vacio'),
+        .notEmpty().withMessage('Name cannot be empty'),
     body('email')
-        .isEmail().withMessage('E-mail no válido'),
+        .isEmail().withMessage('Invalid email'),
     handleInputErrors,
     AuthController.updateProfile
 )
@@ -93,12 +93,12 @@ router.put('/profile',
 router.post('/update-password',
     authenticate,
     body('current_password')
-    .notEmpty().withMessage('El password actual no puede ir vacio'),
+    .notEmpty().withMessage('Current password cannot be empty'),
     body('password')
-        .isLength({ min: 8 }).withMessage('El password debe ser de 8 caracteres'),
+        .isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
     body('password_confirmation').custom((value, { req }) => {
         if (value !== req.body.password) {
-            throw new Error('Los password deben ser iguales')
+            throw new Error('Passwords must match')
         }
         return true
     }),
@@ -109,7 +109,7 @@ router.post('/update-password',
 router.post('/check-password',
     authenticate,
     body('password')
-    .notEmpty().withMessage('El password no puede ir vacio'),
+    .notEmpty().withMessage('Password cannot be empty'),
     handleInputErrors,
     AuthController.checkPassword
 )

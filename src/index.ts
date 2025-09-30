@@ -5,5 +5,5 @@ import server from "./server"
 const port = process.env.PORT || 4001
 
 server.listen(port, () => {
-    console.log(colors.cyan.bold(`REST API funcionando en el puerto ${port}`))
+    console.log(colors.cyan.bold(`REST API working on port: ${port}`))
 })

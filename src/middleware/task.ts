@@ -15,7 +15,7 @@ export async function taskExists(req: Request, res: Response, next: NextFunction
         const task = await Task.findById(taskId)
 
         if (!task) {
-            const error = new Error('Tarea no encontrado')
+            const error = new Error('Tast not found')
             res.status(404).json({ error: error.message })
             return
         }
@@ -23,13 +23,13 @@ export async function taskExists(req: Request, res: Response, next: NextFunction
         req.task = task
         next()
     } catch (error) {
-        res.status(500).json({ error: 'Hubo un error' })
+        res.status(500).json({ error: 'There was an error' })
     }
 }
 
 export function taskBelongsToProject(req: Request, res: Response, next: NextFunction) {
     if (req.task.project.toString() !== req.project.id.toString()) {
-        const error = new Error('Acción no válida')
+        const error = new Error('Invalid action')
         res.status(400).json({ error: error.message })
         return
     }
@@ -38,7 +38,7 @@ export function taskBelongsToProject(req: Request, res: Response, next: NextFunc
 
 export function hasAuthorization(req: Request, res: Response, next: NextFunction) {
     if (req.user.id.toString() !== req.project.manager.toString()) {
-        const error = new Error('Acción no válida')
+        const error = new Error('Invalid action')
         res.status(400).json({ error: error.message })
         return
     }

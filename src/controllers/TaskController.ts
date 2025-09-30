@@ -8,9 +8,9 @@ export class TaskController {
             task.project = req.project.id
             req.project.tasks.push(task.id)
             await Promise.allSettled([task.save(), req.project.save()])
-            res.send('Tarea creada correctamente')
+            res.send('Task created successfully')
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error' })
+            res.status(500).json({ error: 'There was an error' })
         }
     }
 
@@ -19,7 +19,7 @@ export class TaskController {
             const tasks = await Task.find({ project: req.project.id }).populate('project')
             res.json(tasks)
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error' })
+            res.status(500).json({ error: 'There was an error' })
         }
     }
 
@@ -31,7 +31,7 @@ export class TaskController {
 
             res.json(task)
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error' })
+            res.status(500).json({ error: 'There was an error' })
         }
     }
 
@@ -40,9 +40,9 @@ export class TaskController {
             req.task.name = req.body.name
             req.task.description = req.body.description
             await req.task.save()
-            res.send('Tarea actualizada correctamente')
+            res.send('Task updated successfully')
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error' })
+            res.status(500).json({ error: 'There was an error' })
         }
     }
 
@@ -51,9 +51,9 @@ export class TaskController {
             req.project.tasks = req.project.tasks.filter(task => task.toString() !== req.task.id.toString())
             await Promise.allSettled([req.task.deleteOne(), req.project.save()])
 
-            res.send('Tarea eliminada correctamente')
+            res.send('Task deleted successfully')
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error' })
+            res.status(500).json({ error: 'There was an error' })
         }
     }
 
@@ -72,10 +72,10 @@ export class TaskController {
 
             req.task.completedBy.push(data)
             await req.task.save()
-            res.send('Tarea actualizada')
+            res.send('Task status updated successfully')
 
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error' })
+            res.status(500).json({ error: 'There was an error' })
         }
     }
 }
